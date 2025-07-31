@@ -4,7 +4,8 @@ import { FilterContainer } from "./components/FilterContainer";
 import { HomePage } from "./components/HomePage";
 import { useState, useEffect } from "react";
 
-export const BASE_URL = "http://localhost:9000";
+export const BASE_URL = "https://foodyzone-react-practice-1.onrender.com";
+
 
 export default function App() {
   const [data, setData] = useState(null);
