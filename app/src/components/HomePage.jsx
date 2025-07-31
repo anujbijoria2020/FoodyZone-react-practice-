@@ -10,15 +10,26 @@ export function HomePage({ data, loading, error }) {
       />
       <div className="relative z-10 flex justify-center items-center py-10">
         {/* Scrollable container */}
-        <div className="flex flex-wrap justify-center gap-6 max-w-5xl h-[400px] overflow-y-auto p-4 bg-black/2 backdrop-blur-sm rounded-lg shadow-xl
+        {error?<p className="h-10 w-50 bg-red-500 text-center text-white rounded-lg p-1 mt-40">Error:{error}</p>:
+
+        loading?<p className="h-10 w-50 bg-red-500 text-center text-white rounded-lg p-1 mt-40">Loading Items...</p>:
+        data?.length===0?
+         <p className="h-10 w-50 bg-red-500 text-center text-white rounded-lg p-1 mt-40">No items available</p>: 
+             <div
+          className="flex flex-wrap justify-center gap-6 max-w-5xl h-[400px] overflow-y-auto p-4 bg-black/2 backdrop-blur-sm rounded-lg shadow-xl
          [&::-webkit-scrollbar]:w-1
   [&::-webkit-scrollbar-track]:bg-gray-200
   [&::-webkit-scrollbar-thumb]:bg-red-600
-        ">
+        "
+        >
+      
           {data?.map((food, index) => (
             <FoodsCards key={index} food={food} />
           ))}
-        </div>
+        </div> }
+        
+
+   
       </div>
     </div>
   );
@@ -30,7 +41,7 @@ function FoodsCards({ food }) {
       <div className="w-1/3">
         <img
           className="w-full h-full object-cover rounded-md"
-          src={BASE_URL+food.image} 
+          src={BASE_URL + food.image}
           alt={food.name}
         />
       </div>
